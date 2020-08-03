@@ -5,7 +5,7 @@ cd /proc; cat cpuinfo; cat meminfo
 sudo lshw -short -C disk | grep sda
 
 3) Вывести сведения обо всех платах расширения на шине PCIEx.
-lspci  #  это все устройста pci, тпмже pciEX
+lspci | grep -i exp
 
 4) Отключить звуковую карту.
 -в моем случае-
