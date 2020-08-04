@@ -9,8 +9,8 @@ lspci | grep -i exp
 
 4) Отключить звуковую карту.
 -в моем случае-
-cat /proc/modules | grep sound; 
-sudo modprobe -r soundwire_intel soundwire_cadence soundwire_bus 
+cat /proc/modules | grep sound;
+sudo modprobe -r soundwire_intel soundwire_cadence soundwire_bus
 
 5) Выключить контроллер usb.
 lsmod | grep usb
@@ -32,6 +32,8 @@ sudo grub-install --no-floppy --root-directory=/media/flash /dev/sdb1
 
 
 4) Попробовать загрузить ОС в режиме, отличающемся от режима по умолчанию.
+sudo grub-reboot 1 #однократно выбирает второй пункт меню по-умолчанию (только для следующей загрузки)
+
 5) Узнать какой из стилей инициализации используется в вашей ОС.
 ps -p 1 #где p это pid
 ----------
