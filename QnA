@@ -9,8 +9,8 @@ lspci | grep -i exp
 
 4) Отключить звуковую карту.
 -в моем случае-
-cat /proc/modules | grep sound; 
-sudo modprobe -r soundwire_intel soundwire_cadence soundwire_bus 
+cat /proc/modules | grep sound;
+sudo modprobe -r soundwire_intel soundwire_cadence soundwire_bus
 
 5) Выключить контроллер usb.
 lsmod | grep usb
@@ -32,24 +32,16 @@ sudo grub-install --no-floppy --root-directory=/media/flash /dev/sdb1
 
 
 4) Попробовать загрузить ОС в режиме, отличающемся от режима по умолчанию.
+sudo grub-reboot 1 #однократно выбирает второй пункт меню по-умолчанию (только для следующей загрузки)
+
 5) Узнать какой из стилей инициализации используется в вашей ОС.
 ps -p 1 #где p это pid
 ----------
 101_3_dz.txt
 1) Изменить режим запуска по умолчанию ОС.
-systemctl get-default
-systemctl set-default multi-user.target
-
 2) Переключиться между несколькими режимами работы.
-runlevel #посмотреть
-telinit 5 #сменить
-
 3) Убрать из автозапуска по умолчанию службу сети.
-systemctl disable systemd-networkd.service
-
 4) Проверить статус службы аудио.
-sudo systemctl status alsa-restore.service  alsa-state.service    alsa-utils.service
-
 5) Перезагрузить ПК через работу с уровнями выполнения или таргетами.
 systemctl isolate reboot.target
 ------
