@@ -92,19 +92,18 @@ Device     Boot   Start      End Sectors  Size Id Type
 
 3) Перенести каталог /home на отдельный раздел.
 sudo -s #нужен рут
-mkdir /mnt/newhome && mount /dev/sdb1 /mnt/newhome #создали папку и примонтировали ее
-rsync -a /home /mnt/newhome #скопировали и отсинхронизировали всё их /home
-nano  /etc/fstab #редактируем fstab
-редактируем или дописываем /dev/sdb1 /home           ext4   defaults        0       1
+mkfs.ext4 /dev/sdb1 # форматнем раздел
+mkdir /mnt/home 
+mount /dev/sdb1 /mnt/home  # примонтировали каталог
+cp -a /home/* /mnt/home # скопировали все из /home в /mnt
+rm -rf /home/* # удалили старую папку /home
+echo "/dev/sdb1       /home           ext4    defaults           0       1" >> /etc/fstab # допишем в fstab новое положение /home
 mount -a # примонтировали все файловые системы что были указаны в fstab
-
-df -h | grep /home проверяем, на выходе имеем:
+df -h | grep /home # проверяем, на выходе имеем:
 /dev/sdb1        1.9G          12M  1.7G            1% /home
 
-
-
-
 4) Создать еще один раздел подкачки.
+
 5) Добавить еще два диска и создать на нем несколько логических томов (LVM).
 6) Попробовать переносить тома с одного жесткого диска на другой без остановки ОС.
 7) Определить точную версию ядра ОС.
