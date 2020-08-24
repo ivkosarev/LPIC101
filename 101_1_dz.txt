@@ -1,0 +1,18 @@
+1) Просмотреть информацию о процессоре и модулях оперативной памяти.
+cd /proc; cat cpuinfo; cat meminfo
+
+2) Определить модель жесткого диска.
+sudo lshw -short -C disk | grep sda
+
+3) Вывести сведения обо всех платах расширения на шине PCIEx.
+lspci | grep -i exp
+
+4) Отключить звуковую карту.
+-в моем случае-
+cat /proc/modules | grep sound; 
+sudo modprobe -r soundwire_intel soundwire_cadence soundwire_bus 
+
+5) Выключить контроллер usb.
+lsmod | grep usb
+modinfo usbhid
+sudo modprobe -r usbhid
