@@ -27,3 +27,5 @@ apt-get update
 apt-get install webmin
 
 5) Обновить все пакеты ПО. 
+
+apt-get update
