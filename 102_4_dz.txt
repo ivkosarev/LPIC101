@@ -1,6 +1,29 @@
 
 1) Добавить в репозитории информацию для работы с пакетом java.
+
+sudo add-apt-repository ppa:webupd8team/java
+
 2) Установить java со всеми зависимостями.
+
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+apt install default-jre
+
 3) Удалить java.
+
+apt-get autoremove -y oracle-java8-installer
+
+
 4) Установить webmin.
+
+echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+
+wget http://www.webmin.com/jcameron-key.asc
+
+apt-key add jcameron-key.asc
+
+apt-get update
+
+apt-get install webmin
+
 5) Обновить все пакеты ПО. 
