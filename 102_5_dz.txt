@@ -1,0 +1,31 @@
+
+1) Добавить в репозитории информацию для работы с пакетом java.
+
+2) Установить java со всеми зависимостями.
+
+sudo yum install java-1.8.0-openjdk
+
+3) Удалить java.
+
+sudo yum remove java-1.8.0-openjdk
+rpm -aq | grep -i jdk проверили
+
+4) Установить webmin.
+
+mcedit /etc/yum.repos.d/webmin.repo
+
+[Webmin]
+name=Webmin Distribution Neutral
+#baseurl=http://download.webmin.com/download/yum
+mirrorlist=http://download.webmin.com/download/yum/mirrorlist
+enabled=1
+
+rpm --import http://www.webmin.com/jcameron-key.asc
+
+yum install -y webmin
+
+chkconfig webmin on
+#root/{rootpass}
+5) Обновить все пакеты ПО. 
+
+sudo yum update 
