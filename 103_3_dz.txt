@@ -8,10 +8,8 @@ sudo find /home -size +1M -type f | cpio -o > /all_files_more_1mb.cpio
 
 3) Найти в домашней папке все файлы, начианющиеся с букв "a" по "z" и скопировать их в папку temp в домашнем "каталоге".
 
-find /home 
+mkdir /home/ivan/temp; sudo find /home/ivan/ [a-z]* -maxdepth 0  -type f | xargs cp -Rf /home/ivan/temp/
 
 4) Сделать резервную копию загрузочного сектора диска.  
 
-5) Удалить все ненужные временные файлы.
-
-6) Удалить все созданные в течении выполнения ДЗ каталоги.
+cp -rf /boot /bckp_boot
